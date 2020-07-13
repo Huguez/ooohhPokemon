@@ -5,16 +5,22 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PokemonComponent } from './pages/pokemon/pokemon.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TypeComponent } from './pages/type/type.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    PokemonComponent,
+    TypeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
