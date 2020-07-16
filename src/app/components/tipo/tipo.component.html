@@ -1,0 +1,78 @@
+<h2 class="mt-3 mb-3  row justify-content-center">
+    {{ titulo | uppercase }}
+</h2>
+
+<div class="container ">
+    <!-- {{ damageRelations | json }} -->
+    
+    <div *ngIf="damageRelations.double_damage_from.length > 0 " class="row">
+        <h5> Recibe doble daño de: </h5>
+        <div *ngFor="let item of damageRelations.double_damage_from" class="column">
+            <p class="badge badge-danger ml-2" > {{item.name}} </p>
+        </div>
+    </div>
+    
+    <div *ngIf="damageRelations.double_damage_to.length > 0 " class="row">
+        <h5> Genera doble daño a: </h5>
+        <div *ngFor="let item of damageRelations.double_damage_to" class="column" >
+            <p class=" badge badge-success ml-2"> {{item.name}} </p>
+        </div>
+    </div>
+
+    <div *ngIf="damageRelations.half_damage_from.length > 0 " class="row">
+        <h5> Recibe medio daño de: </h5>
+        <div *ngFor="let item of damageRelations.half_damage_from"  class="column">
+            <p class="badge badge-danger ml-2"> {{item.name}} </p>
+        </div>
+    </div>
+
+    <div *ngIf="damageRelations.half_damage_to.length > 0 " class="row">
+        <h5> Genera medio daño a: </h5>
+        <div *ngFor="let item of damageRelations.half_damage_to"  class="column">
+            <p class=" badge badge-warning ml-2"> {{item.name}} </p>
+        </div>
+    </div>
+
+    <div *ngIf="damageRelations.no_damage_from.length > 0 " class="row">
+        <h5> No Recibe daño de: </h5>
+        <div *ngFor="let item of damageRelations.no_damage_from"  class="column" >
+            <p class="badge badge-success ml-2"> {{item.name}} </p>
+        </div>
+    </div>
+
+    <div *ngIf="damageRelations.no_damage_to.length > 0 " class="row">
+        <h5> No Genera daño a: </h5>
+        <div *ngFor="let item of damageRelations.no_damage_to" class="column">
+            <p class="badge badge-warning ml-2"> {{item.name}} </p>
+        </div>
+    </div>
+    <!-- fin relacion de dano -->
+
+</div>
+<div  class="row">
+
+    <div *ngIf="pokemons.length > 0 " class="mr-0 mt-3 mb-5 col-7" style="height: 400px; overflow: auto;">
+        <h5> Pokemon's Tipo Normal </h5>
+        <ul class="list-group ">
+            <li *ngFor="let pokemon of pokemons" class=" list-group-item ">{{ pokemon }}</li>
+        </ul>
+    </div>
+
+</div>
+
+
+    <!--  -->
+    
+
+
+<!--
+{{ gameIndices | json}}
+<br>
+{{ generation | json }}
+<br>
+{{ moveDamageClass | json }}
+<br>
+{{ moves | json }}
+<br>
+<br>
+<br> -->
