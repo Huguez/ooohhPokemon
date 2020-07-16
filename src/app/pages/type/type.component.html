@@ -1,1 +1,19 @@
-<p>type works!</p>
+
+<div class="row mt-5">
+
+    <div class="card-columns">
+
+        <div *ngFor="let tipo of listaType" style="max-width: 18rem;"  class="card border-secundary mb-3 text-center">
+            <h5 class="card-header">{{ tipo.name }}</h5>
+            <div class="card-body text-primary">
+                <p class="card-title">
+                    <button class="btn btn-block btn-link" (click)="irAlTipo( tipo )" >
+                        Saber Más...
+                    </button>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import { Resp } from 'src/app/interfaces/resp';
+import { Resp } from '../../interfaces/resp';
 
 @Component({
   selector: 'app-home',
