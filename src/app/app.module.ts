@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PokemonComponent } from './pages/pokemon/pokemon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TypeComponent } from './pages/type/type.component';
+import { TipoComponent } from './components/tipo/tipo.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TypeComponent } from './pages/type/type.component';
     NavbarComponent,
     HomeComponent,
     PokemonComponent,
-    TypeComponent
+    TypeComponent,
+    TipoComponent
   ],
   imports: [
     BrowserModule,
