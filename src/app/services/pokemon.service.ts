@@ -6,11 +6,18 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PokemonService {
+  
+  private 
 
-  private type_API: string    = "https://pokeapi.co/api/v2/type";
+  private pokemonAbility_API       = "https://pokeapi.co/api/v2/ability/";
+
+  private pokemon_API:string       = "https://pokeapi.co/api/v2/pokemon";
+
+  private type_API: string         = "https://pokeapi.co/api/v2/type";
   
-  private pokemon_API: string = "https://pokeapi.co/api/v2/pokemon?limit=1000&offset=200";
+  private all_pokemons_API: string = "https://pokeapi.co/api/v2/pokemon?limit=1000&offset=200";
   
+
   constructor( private http:HttpClient ) { }
 
   getTypes(){
@@ -22,7 +29,15 @@ export class PokemonService {
   }
 
   getPokemons(){
-    return this.http.get<any>( this.pokemon_API );
+    return this.http.get<any>( this.all_pokemons_API );
+  }
+  
+  getPokemon( id:number ){
+    return this.http.get<any>( `${ this.pokemon_API }/${ id }` );
+  }
+
+  getPokemonName( name:string ){
+    return this.http.get<any>( `${ this.pokemon_API }/${ name }` );
   }
 
 }
