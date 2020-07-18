@@ -1,5 +1,7 @@
+import { DamageRelation } from './damage-relation';
+
 export interface InterfacePokemon {
-    damage_relations:  Object,
+    damage_relations:  DamageRelation,
     game_indices:      Array<any>,
     generation:        Object,
     id:                number,
