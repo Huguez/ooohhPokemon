@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
 // { count: number, next: any, previous: any, results: Array<any> }
   ngOnInit(): void {
     this._ps.getPokemons().subscribe( ( p: Resp ) =>{
-      // const keys = Object.keys( p )      
-      // console.log(keys);
       this.array = p.results;
     });
   }

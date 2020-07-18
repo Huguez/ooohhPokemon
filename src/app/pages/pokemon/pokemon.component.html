@@ -1,1 +1,125 @@
-<p>pokemon works!</p>
+
+
+<div *ngIf="carga" class="container">
+    
+    <div class="row">
+        <h4 class='col justify-content-center'>
+            {{ dataPokemon.name | uppercase }}
+        </h4>
+    </div>
+    
+    <div class="row">
+        <div>
+            <ul>
+                <li *ngFor="let item of dataPokemon.abilities">
+                    {{ item.ability.name |json }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        {{ dataPokemon.base_experience | json }} <br>
+    </div>
+
+
+    <div class="row" >
+        <div>
+            <ul>
+                <li *ngFor="let item of dataPokemon.forms">
+                    {{ item.name |json }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row" >
+        <div>
+            <ul>
+                <li *ngFor="let item of dataPokemon.game_indices">
+                    {{ item |json }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row" >
+        {{ dataPokemon.held_items | json }} <br>
+    </div>
+
+    <div class="row" >
+        {{ dataPokemon.height | json }} <br>
+    </div>
+    
+    <div class="row" >
+        {{ dataPokemon.id | json }} <br>
+    </div>
+    
+    <div class="row" >
+        {{ dataPokemon.is_default | json }} <br>
+    </div>
+    
+    <div class="row" >
+        {{ dataPokemon.location_area_encouters | json }} <br>
+    </div>
+    
+    <div class="row" >
+        <div>
+            <ul>
+                <li *ngFor="let item of dataPokemon.moves">
+                    {{ item | json }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row" >
+        {{ dataPokemon.order | json  }} <br>
+    </div>
+    
+    <div class="row" >
+        <div>
+            <ul>
+                <li>
+                    {{ dataPokemon.species |json }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row" >
+        <div>
+            <ul>
+                <li>
+                    {{ dataPokemon.sprites | json }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row" >
+        {{ dataPokemon.weight | json  }} <br>
+    </div>
+    
+    <div class="row" >
+        <div>
+            <ul>
+                <li *ngFor="let item of dataPokemon.types ">
+                    {{ item| json  }}
+                </li>
+            </ul>
+        </div> 
+     </div>
+    
+     <div class="row" >
+        <div>
+            <ul>
+                <li *ngFor="let item of dataPokemon.stats">
+                    {{ item | json }}
+                </li>
+            </ul>
+        </div> 
+    </div>
+
+</div>
+
