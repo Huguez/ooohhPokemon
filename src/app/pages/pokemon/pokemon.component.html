@@ -1,125 +1,98 @@
+<div class="row justify-content-center">
+    <div *ngIf="!carga" class="mt-5 text-primary spinner-border" style="width: 15rem; height: 15rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 
 
-<div *ngIf="carga" class="container">
+
+
+<div *ngIf="carga" class="container m-3 shadow p-3 mb-5 bg-white rounded">
     
     <div class="row">
-        <h4 class='col justify-content-center'>
-            {{ dataPokemon.name | uppercase }}
-        </h4>
-    </div>
-    
-    <div class="row">
-        <div>
-            <ul>
-                <li *ngFor="let item of dataPokemon.abilities">
-                    {{ item.ability.name |json }}
-                </li>
-            </ul>
-        </div>
-    </div>
 
-    <div class="row">
-        {{ dataPokemon.base_experience | json }} <br>
-    </div>
+        <div class="pl-5 col-4">
+            <img class="mt-5 mb-5" [src]="dataPokemon.sprites.front_shiny" width="200" />  
+            <img class="mt-5" [src]="dataPokemon.sprites.front_default" width="200" />  
+        </div>
 
+        <div class="col p-4">
 
-    <div class="row" >
-        <div>
-            <ul>
-                <li *ngFor="let item of dataPokemon.forms">
-                    {{ item.name |json }}
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="row" >
-        <div>
-            <ul>
-                <li *ngFor="let item of dataPokemon.game_indices">
-                    {{ item |json }}
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="row" >
-        {{ dataPokemon.held_items | json }} <br>
-    </div>
+            <div class="row justify-content-center">
+                <h2>
+                    {{ dataPokemon.name | uppercase }}
+                </h2>
+            </div>
 
-    <div class="row" >
-        {{ dataPokemon.height | json }} <br>
-    </div>
-    
-    <div class="row" >
-        {{ dataPokemon.id | json }} <br>
-    </div>
-    
-    <div class="row" >
-        {{ dataPokemon.is_default | json }} <br>
-    </div>
-    
-    <div class="row" >
-        {{ dataPokemon.location_area_encouters | json }} <br>
-    </div>
-    
-    <div class="row" >
-        <div>
-            <ul>
-                <li *ngFor="let item of dataPokemon.moves">
-                    {{ item | json }}
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="row" >
-        {{ dataPokemon.order | json  }} <br>
-    </div>
-    
-    <div class="row" >
-        <div>
-            <ul>
-                <li>
-                    {{ dataPokemon.species |json }}
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="row" >
-        <div>
-            <ul>
-                <li>
-                    {{ dataPokemon.sprites | json }}
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="row" >
-        {{ dataPokemon.weight | json  }} <br>
-    </div>
-    
-    <div class="row" >
-        <div>
-            <ul>
-                <li *ngFor="let item of dataPokemon.types ">
-                    {{ item| json  }}
-                </li>
-            </ul>
-        </div> 
-     </div>
-    
-     <div class="row" >
-        <div>
-            <ul>
-                <li *ngFor="let item of dataPokemon.stats">
-                    {{ item | json }}
-                </li>
-            </ul>
-        </div> 
-    </div>
+            <div *ngIf="dataPokemon.abilities.length > 0" class=" m-3 row">
+                <h5>Habilidades: </h5>
+                <div  class="column" *ngFor="let item of dataPokemon.abilities" > 
+                    <h3 class=" badge badge-success ml-2">
+                       {{ item.ability.name }}
+                    </h3>
+                </div>
+            </div>
+
+            <div *ngIf="dataPokemon.height != 0" class="row m-3 " >
+                <h5 > Altura: {{ dataPokemon.height / 10 }} mts. </h5> 
+            </div>
+            
+            <div *ngIf="dataPokemon.weight != 0 " class="row m-3" >
+                <h5 > Peso: {{ dataPokemon.weight / 10 }}  kg. </h5>
+            </div>
+                    
+            <div class="row m-3" *ngIf="dataPokemon.moves.length > 0">
+                <h5 class="mr-2"> Movimientos: </h5> 
+                <div  *ngFor="let item of dataPokemon.moves">
+                    <p class="ml-1 badge badge-info " >{{ item.move.name }} </p>
+                        <!-- <div  *ngFor="let i of item.version_group_details">
+                            <p class=" badge badge-info ">    {{ i.version_group.name }} -  {{ i.move_learn_method.name | json }} </p>
+                        </div>  -->
+                </div>
+            
+            </div>
+
+            <div class="row m-3" *ngIf="dataPokemon.types.length > 0" >
+                <h5> Tipo(s): </h5>
+                    <div *ngFor="let item of dataPokemon.types " >
+                        <p class="ml-1 badge badge-dark">
+                            {{ item.type.name }}
+                        </p>
+                    </div>
+            </div>
+
+            <div *ngIf="dataPokemon.base_experience != 0" class="m-3 row">              
+                <h5> La experiencia base ganada <br> por derrotar a este Pokémon: {{ dataPokemon.base_experience }}  </h5>
+            </div>
+
+            <div class="row m-3" *ngIf="dataPokemon.game_indices.length > 0" >
+                <h5>Juegos relevantes que aparece (por generación): </h5>
+                <div *ngFor="let item of dataPokemon.game_indices">
+                    <p class="ml-1 badge badge-secondary">
+                        {{ item.version.name }}
+                    </p>
+                </div>
+            </div>
+                    
+            <div class="row m-3"  *ngIf="dataPokemon.held_items.length > 0">
+                <h5>Elementos que puede tener si se captura: </h5>
+                    <div *ngFor="let cosas of dataPokemon.held_items">
+                        <p class="ml-1 badge badge-light" >
+                            {{ cosas.item.name }}
+                        </p>
+                    </div>
+            </div>
+
+            <div class="row m-3" *ngIf="dataPokemon.stats.length > 0" >
+                <h5> Estadisticas: </h5>
+                    <div *ngFor="let item of dataPokemon.stats">
+                        <p class="ml-1 badge badge-success">
+                            {{ item.stat.name }}: <br> {{ item.base_stat }}
+                        </p>
+                    </div>
+                </div> 
+            </div>
+    </div>        
 
 </div>
 

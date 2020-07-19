@@ -9,7 +9,8 @@ import { Pokemon } from '../../interfaces/pokemon';
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-
+  
+  public wawa: any;
   public name: string;
   public dataPokemon: Pokemon;
   public carga: boolean;
@@ -24,7 +25,7 @@ export class PokemonComponent implements OnInit {
     
     this._ps.getPokemonName( this.name ).subscribe( ( data : Pokemon) => {
       this.dataPokemon = data;
-      console.log( this.dataPokemon );
+      // console.log( this.dataPokemon );
       this.carga = true;
     } );
 
