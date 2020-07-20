@@ -7,17 +7,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PokemonService {
   
-  private 
+  private generacion_API:string     = "https://pokeapi.co/api/v2/generation";
 
-  private pokemonAbility_API       = "https://pokeapi.co/api/v2/ability/";
+  private pokemonAbility_API:string = "https://pokeapi.co/api/v2/ability/";
 
-  private pokemon_API:string       = "https://pokeapi.co/api/v2/pokemon";
+  private pokemon_API:string        = "https://pokeapi.co/api/v2/pokemon";
 
-  private type_API: string         = "https://pokeapi.co/api/v2/type";
+  private type_API: string          = "https://pokeapi.co/api/v2/type";
   
-  private all_pokemons_API: string = "https://pokeapi.co/api/v2/pokemon?limit=1000&offset=200";
+  private all_pokemons_API: string  = "https://pokeapi.co/api/v2/pokemon?limit=1000&offset=200";
   
-
   constructor( private http:HttpClient ) { }
 
   getTypes(){
@@ -38,6 +37,14 @@ export class PokemonService {
 
   getPokemonName( name:string ){
     return this.http.get<any>( `${ this.pokemon_API }/${ name }` );
+  }
+
+  getAllGeneraciones(){
+    return this.http.get<any>( `${ this.generacion_API }` );
+  }
+
+  getGeneracion( id:any ){
+    return this.http.get<any>( `${ this.generacion_API }/${id}` );
   }
 
 }
