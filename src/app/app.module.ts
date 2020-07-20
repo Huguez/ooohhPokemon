@@ -9,6 +9,7 @@ import { PokemonComponent } from './pages/pokemon/pokemon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TypeComponent } from './pages/type/type.component';
 import { TipoComponent } from './components/tipo/tipo.component';
+import { GeneracionComponent } from './pages/generacion/generacion.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TipoComponent } from './components/tipo/tipo.component';
     HomeComponent,
     PokemonComponent,
     TypeComponent,
-    TipoComponent
+    TipoComponent,
+    GeneracionComponent
   ],
   imports: [
     BrowserModule,

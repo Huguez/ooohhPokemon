@@ -1,0 +1,67 @@
+
+<div class="row justify-content-center">
+    <div *ngIf="!carga" class="mt-5 text-primary spinner-border" style="width: 15rem; height: 15rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="carga" class="container m-3 shadow-lg p-3 mb-5 bg-white rounded">
+
+    <div class=" m-3 row">
+       <h4> {{ generacion | uppercase }} </h4> 
+    </div>
+
+    <div class=" m-3 row">
+        <h5> Región principal de esta generación:  {{ main_region.name }} </h5> 
+     </div> 
+     
+    <div *ngIf="habilidades.length > 0" class=" m-3 row">
+        <h5>Habilidades Introducidas en esta Geneacion : </h5>
+        <div  class="column" *ngFor="let item of habilidades" > 
+            <h3 class=" badge badge-success ml-2">
+               {{ item.name }}
+            </h3>
+        </div>
+    </div>
+
+   
+
+    <div *ngIf="moves.length > 0" class=" m-3 row">
+        <h5>Movimientos Introducidos en esta Generacion: </h5>
+        <div  class="column" *ngFor="let item of moves" > 
+            <h3 class=" badge badge-primary ml-2">
+               {{ item.name }}
+            </h3>
+        </div>
+    </div>
+
+
+    <div *ngIf="pokemon_species.length > 0" class=" m-3 row">
+        <h5>Pokemon's Introdiccidos en esta Geneacion: </h5>
+        <div  class="column" *ngFor="let item of pokemon_species" > 
+            <h3 class=" badge badge-secundary ml-2">
+               {{ item.name }}
+            </h3>
+        </div>
+    </div>
+
+    <div *ngIf="types.length > 0" class=" m-3 row">
+        <h5>Tipos de Pokemon's que se Introdujeron en esta Geneacion: </h5>
+        <br>
+        <div  class="column" *ngFor="let item of types" > 
+            <h3 class=" badge badge-dark ml-2">
+               {{ item.name }}
+            </h3>
+        </div>
+    </div>
+    
+    <div *ngIf="version_groups.length > 0" class=" m-3 row">
+        <h5>Versiones de los juegos de esta Geneacion: </h5>
+        <div  class="column" *ngFor="let item of version_groups" > 
+            <h3 class=" badge badge-info ml-2">
+               {{ item.name }}
+            </h3>
+        </div>
+    </div>
+
+</div>
