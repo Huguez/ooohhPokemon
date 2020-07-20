@@ -1,15 +1,30 @@
+<div class="row justify-content-center">
+    <div *ngIf="!carga" class="mt-5 text-primary spinner-border" style="width: 15rem; height: 15rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 
-<div class="m-3 row">
+
+<div *ngIf="carga" class="m-3 row">
     <h2 class=" justify-content-center">Pokemon's</h2>
 </div>
 
-<div class="card-columns ">
+<div *ngIf="carga" class="card-columns ">
     <div *ngFor="let tipo of array" class="card">
         <div   class="card-body">
-            <h5 class="card-title">{{tipo.name }}</h5>
             
-            <button  [routerLink]="['/pokemon', tipo.name ]" class="btn btn-block btn-outline-primary" > saber mas </button>
-                <!-- {{ tipo.url }} -->
+            <div class="row justify-content-center">
+                <h5 class="card-title">{{tipo.name }}</h5>
+            </div>
+            
+            <div class="row justify-content-center">
+                <img [src]="tipo.img">
+            </div>
+            
+            <button  [routerLink]="['/pokemon', tipo.name ]" class="btn btn-block btn-outline-primary" >
+                saber mas
+            </button>
+                
         </div>
     </div>
 </div>
