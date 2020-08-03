@@ -10,6 +10,7 @@
 </div>
 
 <div *ngIf="carga" class="card-columns ">
+    
     <div *ngFor="let tipo of array" class="card">
         <div   class="card-body">
             
@@ -28,3 +29,17 @@
         </div>
     </div>
 </div>
+
+    <div class=" m-5 d-flex justify-content-center">
+        <div class="col-7">
+
+            <div class="row">
+                <button type="button" (click)="cargarPokemons()" class="btn btn-block btn-primary" >
+                    Cargar Más Pokemon's
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    

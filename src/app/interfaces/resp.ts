@@ -2,5 +2,5 @@ export interface Resp{
     count: number,
     next: any,
     previous: any,
-    results: Array<Object>
+    results: Array<any>
 }

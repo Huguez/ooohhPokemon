@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { Resp } from '../interfaces/resp';
 
 
 @Injectable({
@@ -7,15 +10,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PokemonService {
   
-  private generacion_API:string     = "https://pokeapi.co/api/v2/generation";
-
-  private pokemonAbility_API:string = "https://pokeapi.co/api/v2/ability/";
-
-  private pokemon_API:string        = "https://pokeapi.co/api/v2/pokemon";
-
-  private type_API: string          = "https://pokeapi.co/api/v2/type";
+  private generacion_API: string     = "https://pokeapi.co/api/v2/generation";
   
-  private all_pokemons_API: string  = "https://pokeapi.co/api/v2/pokemon?limit=1000&offset=200";
+  private pokemonAbility_API: string = "https://pokeapi.co/api/v2/ability";
+  
+  private pokemon_API: string        = "https://pokeapi.co/api/v2/pokemon";
+  
+  private type_API: string           = "https://pokeapi.co/api/v2/type";
+  
+  private all_pokemons_API: string   = "https://pokeapi.co/api/v2/pokemon";
   
   constructor( private http:HttpClient ) { }
 
@@ -27,8 +30,19 @@ export class PokemonService {
     return this.http.get<any>( `${ this.type_API }/${ id }`);
   }
 
-  getPokemons(){
-    return this.http.get<any>( this.all_pokemons_API );
+  getPokemons( limit?: number, offset?: number ){
+    
+    let url = `${ this.all_pokemons_API }?`;
+    
+    if( limit ){
+      url = `${ url }&limit=${limit}`;
+    }
+
+    if( offset ){
+      url = `${ url }&offset=${offset}`;
+    }
+    
+    return this.http.get<any>( url );
   }
   
   getPokemon( id:number ){
