@@ -22,12 +22,13 @@ export class GeneracionComponent implements OnInit {
   constructor( private _ps:PokemonService, private actRou: ActivatedRoute ){
     this.param = this.actRou.snapshot.paramMap.get("id");
     this.carga = false;
+    // console.log("param: ", this.param );
+    
   }
+
 
   ngOnInit(): void {
     this._ps.getGeneracion( this.param ).subscribe( ( item:any ) => {
-      // console.log(item);
-      
       this.generacion = item.name;
 
       this.habilidades = item.abilities;

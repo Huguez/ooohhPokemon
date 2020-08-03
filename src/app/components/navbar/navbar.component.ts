@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +11,9 @@ export class NavbarComponent implements OnInit {
   
   public listaGeneracion: Array<any> = [];
 
-  constructor( private _ps:PokemonService,private router: Router, private actRou: ActivatedRoute ) { }
+  constructor(private _ps:PokemonService, private router: Router ){}
 
   ngOnInit(): void {
-    
     this._ps.getAllGeneraciones().subscribe( ( lg : any ) => {
       this.listaGeneracion = lg.results.map( item => { 
         
@@ -25,8 +24,10 @@ export class NavbarComponent implements OnInit {
     } );
   }
 
-  reload( id: number ){
-    
+  reload( id ){
+    this.router.navigateByUrl('/generacion', { skipLocationChange: true }).then(() => {
+      this.router.navigate( [ '/generacion/', id ] );
+    }); 
   }
 
 }
